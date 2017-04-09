@@ -9,7 +9,54 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+## Usage
+
+See the example project for usage.
+
+You can setup custom views for both the scratch card cover and the cratch card content.
+The setup is done through a delegate.
+
+```
+class YourViewController: UIViewController {
+    ...
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        configureScratchCardView()
+    }
+
+    private func configureScratchCardView() {
+        scratchCardView.delegate = self
+        scratchCardView.scratchWidth = 150
+    }
+}
+
+extension ScratchCardViewController: ScratchCardViewDelegate {
+
+    func coverView(for scratchCardView: ScratchCardView) -> UIView {
+        let coverView = UIView()
+        coverView.backgroundColor = UIColor.gray
+        return coverView
+    }
+
+    func contentView(for scratchCardView: ScratchCardView) -> UIView {
+        let imageView = UIImageView(image: currentImage)
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }
+}
+
+```
+
+That is all you need to know, its that simple :)
+
+If you want to reload the ScratchCardView call:
+
+```
+scratchCardView.reloadView()
+```
+
+This will trigger a call to your delegate for a new cover and content view.
 
 ## Installation
 

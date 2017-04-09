@@ -32,7 +32,7 @@ class ScratchCardViewController: UIViewController {
     
     private func configureScratchCardView() {
         scratchCardView.delegate = self
-        scratchCardView.scratchWidth = 80
+        scratchCardView.scratchWidth = 150
     }
     
     // MARK: Actions
