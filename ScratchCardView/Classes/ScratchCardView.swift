@@ -10,7 +10,12 @@ import UIKit
 
 public protocol ScratchCardViewDelegate: class {
     
+    /** The top view of the scratch card. Covers the content view. */
     func coverView(for scratchCardView: ScratchCardView) -> UIView
+    
+    /** The content view of the scratch card. 
+     It is initialy covered and is revealed after scratching the view. 
+     */
     func contentView(for scratchCardView: ScratchCardView) -> UIView
 }
 
