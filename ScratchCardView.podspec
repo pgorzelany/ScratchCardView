@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ScratchCardView'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A scratch card view for iOS'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-A scratch card view for iOS
+A scratch card view for iOS. Scratch card made easy!
                        DESC
 
   s.homepage         = 'https://github.com/pgorzelany/ScratchCardView'

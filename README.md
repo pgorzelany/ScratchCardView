@@ -9,9 +9,20 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Installation
+
+ScratchCardView is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod "ScratchCardView"
+```
+
 ## Usage
 
 See the example project for usage.
+
+![](https://thumbs.gfycat.com/MetallicHugeEquestrian-size_restricted.gif)
 
 You can setup custom views for both the scratch card cover and the cratch card content.
 The setup is done through a delegate.
@@ -57,15 +68,6 @@ scratchCardView.reloadView()
 ```
 
 This will trigger a call to your delegate for a new cover and content view.
-
-## Installation
-
-ScratchCardView is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod "ScratchCardView"
-```
 
 ## Author
 
