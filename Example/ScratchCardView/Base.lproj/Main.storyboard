@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9y-wH-wOc" customClass="ScratchCardView" customModule="ScratchCardView">
-                                <rect key="frame" x="0.0" y="20" width="375" height="601"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifb-P8-r0e">
@@ -37,10 +37,10 @@
                         <constraints>
                             <constraint firstItem="ifb-P8-r0e" firstAttribute="top" secondItem="p9y-wH-wOc" secondAttribute="bottom" constant="8" id="8kO-xg-obu"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ifb-P8-r0e" secondAttribute="bottom" constant="8" id="9XN-jD-VBs"/>
+                            <constraint firstItem="p9y-wH-wOc" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="K7s-bu-gPm"/>
                             <constraint firstAttribute="trailing" secondItem="p9y-wH-wOc" secondAttribute="trailing" id="gzI-FH-iWx"/>
                             <constraint firstItem="ifb-P8-r0e" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="qK7-DB-3kw"/>
                             <constraint firstItem="p9y-wH-wOc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="rF3-O5-EYu"/>
-                            <constraint firstItem="p9y-wH-wOc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="yUu-Dn-E0a"/>
                         </constraints>
                     </view>
                     <connections>
