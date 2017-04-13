@@ -42,7 +42,7 @@ class YourViewController: UIViewController {
     }
 }
 
-extension ScratchCardViewController: ScratchCardViewDelegate {
+extension YourViewController: ScratchCardViewDelegate {
 
     func coverView(for scratchCardView: ScratchCardView) -> UIView {
         let coverView = UIView()
@@ -51,7 +51,7 @@ extension ScratchCardViewController: ScratchCardViewDelegate {
     }
 
     func contentView(for scratchCardView: ScratchCardView) -> UIView {
-        let imageView = UIImageView(image: currentImage)
+        let imageView = UIImageView(image: yourCustomImage)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }
