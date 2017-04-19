@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,7 +46,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="coverView" destination="k86-Du-4O4" id="Cta-hf-NFJ"/>
+                        <outlet property="basicCoverView" destination="k86-Du-4O4" id="BWC-Sx-UWX"/>
+                        <outlet property="blurCoverView" destination="HhM-ES-HD9" id="F2F-gq-bXg"/>
+                        <outlet property="customCoverView" destination="dUq-Ol-96O" id="yNV-9u-iHU"/>
                         <outlet property="scratchCardView" destination="p9y-wH-wOc" id="UT5-TV-Mcb"/>
                     </connections>
                 </viewController>
@@ -78,8 +82,93 @@
                         <constraint firstItem="Tcr-2Z-xir" firstAttribute="leading" secondItem="k86-Du-4O4" secondAttribute="leading" id="th9-YA-56V"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" id="HhM-ES-HD9">
+                    <rect key="frame" x="0.0" y="0.0" width="281" height="255"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tailor-image-2" translatesAutoresizingMaskIntoConstraints="NO" id="X7k-fc-aMg">
+                            <rect key="frame" x="0.0" y="0.0" width="281" height="255"/>
+                        </imageView>
+                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYU-rk-CoS">
+                            <rect key="frame" x="0.0" y="0.0" width="281" height="255"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="bJa-OF-UQu">
+                                <rect key="frame" x="0.0" y="0.0" width="281" height="255"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <blurEffect style="light"/>
+                        </visualEffectView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="WYU-rk-CoS" firstAttribute="top" secondItem="HhM-ES-HD9" secondAttribute="top" id="6WW-CD-HbI"/>
+                        <constraint firstItem="X7k-fc-aMg" firstAttribute="leading" secondItem="HhM-ES-HD9" secondAttribute="leading" id="Cdt-qG-54Q"/>
+                        <constraint firstItem="X7k-fc-aMg" firstAttribute="top" secondItem="HhM-ES-HD9" secondAttribute="top" id="OMp-Qu-IJM"/>
+                        <constraint firstAttribute="trailing" secondItem="X7k-fc-aMg" secondAttribute="trailing" id="Tbm-Lm-WYM"/>
+                        <constraint firstAttribute="bottom" secondItem="X7k-fc-aMg" secondAttribute="bottom" id="hU4-rw-gTg"/>
+                        <constraint firstAttribute="trailing" secondItem="WYU-rk-CoS" secondAttribute="trailing" id="qt9-5A-7eS"/>
+                        <constraint firstItem="WYU-rk-CoS" firstAttribute="leading" secondItem="HhM-ES-HD9" secondAttribute="leading" id="yHW-yR-vKb"/>
+                        <constraint firstAttribute="bottom" secondItem="WYU-rk-CoS" secondAttribute="bottom" id="ygJ-I4-Wsu"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="dUq-Ol-96O">
+                    <rect key="frame" x="0.0" y="0.0" width="258" height="254"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="N5V-Ea-Ipb">
+                            <rect key="frame" x="0.0" y="0.0" width="258" height="254"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="npm-oS-UzH">
+                                    <rect key="frame" x="0.0" y="0.0" width="258" height="127"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xli-ut-8Qr">
+                                            <rect key="frame" x="0.0" y="0.0" width="129" height="127"/>
+                                            <color key="backgroundColor" red="1" green="0.51855538739999996" blue="0.67915818039999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KyU-DA-ehv">
+                                            <rect key="frame" x="129" y="0.0" width="129" height="127"/>
+                                            <color key="backgroundColor" red="0.97647058819999999" green="0.98431372549999996" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vew-9B-dy1">
+                                    <rect key="frame" x="0.0" y="127" width="258" height="127"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d1Z-jB-AYz">
+                                            <rect key="frame" x="0.0" y="0.0" width="129" height="127"/>
+                                            <color key="backgroundColor" red="0.78399074719999995" green="0.85931436910000003" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLa-II-cuw">
+                                            <rect key="frame" x="129" y="0.0" width="129" height="127"/>
+                                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdo-Xc-2UQ">
+                            <rect key="frame" x="64.5" y="62.5" width="129" height="129"/>
+                            <color key="backgroundColor" red="1" green="0.44300454885971152" blue="0.33330913255262795" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="zdo-Xc-2UQ" secondAttribute="height" multiplier="1:1" id="HYM-pr-MfL"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="N5V-Ea-Ipb" firstAttribute="leading" secondItem="dUq-Ol-96O" secondAttribute="leading" id="2ab-zF-dyR"/>
+                        <constraint firstItem="zdo-Xc-2UQ" firstAttribute="centerX" secondItem="dUq-Ol-96O" secondAttribute="centerX" id="79S-LJ-Qyh"/>
+                        <constraint firstAttribute="bottom" secondItem="N5V-Ea-Ipb" secondAttribute="bottom" id="Tdv-lr-1wV"/>
+                        <constraint firstItem="zdo-Xc-2UQ" firstAttribute="width" secondItem="dUq-Ol-96O" secondAttribute="width" multiplier="0.5" id="eqr-jc-BWG"/>
+                        <constraint firstItem="N5V-Ea-Ipb" firstAttribute="top" secondItem="dUq-Ol-96O" secondAttribute="top" id="pdW-Vc-YCB"/>
+                        <constraint firstAttribute="trailing" secondItem="N5V-Ea-Ipb" secondAttribute="trailing" id="qwW-cW-sra"/>
+                        <constraint firstItem="zdo-Xc-2UQ" firstAttribute="centerY" secondItem="dUq-Ol-96O" secondAttribute="centerY" id="swe-iA-IVb"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tailor-image-2" width="317" height="512"/>
+    </resources>
 </document>
