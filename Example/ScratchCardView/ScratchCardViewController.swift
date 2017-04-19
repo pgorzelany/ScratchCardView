@@ -41,8 +41,14 @@ class ScratchCardViewController: UIViewController {
         scratchCards = [
             (coverView: basicCoverView, contentView: UIImageView(image: #imageLiteral(resourceName: "tailor-image"))),
             (coverView: blurCoverView, contentView: UIImageView(image: #imageLiteral(resourceName: "tailor-image-2"))),
-            (coverView: customCoverView, contentView: UIImageView(image: #imageLiteral(resourceName: "tailor-image")))
+            (coverView: customCoverView, contentView: UIImageView(image: #imageLiteral(resourceName: "tailor-image-3")))
         ]
+        
+        scratchCards.forEach { (scratchCard) in
+            if let coverImageView = scratchCard.contentView as? UIImageView {
+                coverImageView.contentMode = .scaleAspectFill
+            }
+        }
     }
     
     private func configureScratchCardView() {
