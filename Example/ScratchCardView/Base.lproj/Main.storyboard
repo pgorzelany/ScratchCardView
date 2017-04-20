@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="cT3-8Y-XOV">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scratch Card View Controller-->
+        <!--ScratchCardView-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ScratchCardViewController" customModule="ScratchCardView_Example" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,27 +23,25 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p9y-wH-wOc" customClass="ScratchCardView" customModule="ScratchCardView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ifb-P8-r0e">
-                                <rect key="frame" x="171.5" y="629" width="32" height="30"/>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <action selector="nextButtonTouched:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9jV-2t-8BY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ifb-P8-r0e" firstAttribute="top" secondItem="p9y-wH-wOc" secondAttribute="bottom" constant="8" id="8kO-xg-obu"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ifb-P8-r0e" secondAttribute="bottom" constant="8" id="9XN-jD-VBs"/>
-                            <constraint firstItem="p9y-wH-wOc" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="K7s-bu-gPm"/>
+                            <constraint firstItem="p9y-wH-wOc" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Fqm-Fu-gkn"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="p9y-wH-wOc" secondAttribute="bottom" id="TSU-Wr-FZL"/>
                             <constraint firstAttribute="trailing" secondItem="p9y-wH-wOc" secondAttribute="trailing" id="gzI-FH-iWx"/>
-                            <constraint firstItem="ifb-P8-r0e" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="qK7-DB-3kw"/>
                             <constraint firstItem="p9y-wH-wOc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="rF3-O5-EYu"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="ScratchCardView" id="Nc9-2c-aQH">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="I5o-sL-FLH">
+                            <connections>
+                                <action selector="nextButtonTouched:" destination="vXZ-lx-hvc" id="hAJ-ql-qyL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="basicCoverView" destination="k86-Du-4O4" id="BWC-Sx-UWX"/>
                         <outlet property="blurCoverView" destination="HhM-ES-HD9" id="F2F-gq-bXg"/>
@@ -165,7 +162,25 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+            <point key="canvasLocation" x="1056.8" y="123.68815592203899"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iqX-4p-nI6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cT3-8Y-XOV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="X1l-1u-IPc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="oSp-4I-tvp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UT2-nd-Rft" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="124"/>
         </scene>
     </scenes>
     <resources>

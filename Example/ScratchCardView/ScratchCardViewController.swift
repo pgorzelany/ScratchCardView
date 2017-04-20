@@ -58,7 +58,7 @@ class ScratchCardViewController: UIViewController {
     
     // MARK: Actions
     
-    @IBAction func nextButtonTouched(_ sender: UIButton) {
+    @IBAction func nextButtonTouched(_ sender: UIBarButtonItem) {
         currentIndex = (currentIndex + 1) % (scratchCards.count)
         scratchCardView.reloadView()
     }
