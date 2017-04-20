@@ -22,7 +22,7 @@ pod "ScratchCardView"
 
 See the example project for usage.
 
-![](https://thumbs.gfycat.com/MetallicHugeEquestrian-size_restricted.gif)
+![](https://thumbs.gfycat.com/FlakyDangerousHorsemouse-size_restricted.gif)
 
 You can setup custom views for both the scratch card cover and the cratch card content.
 The setup is done through a delegate.
