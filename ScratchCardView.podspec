@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ScratchCardView'
-  s.version          = '1.0.1'
+  s.version          = '1.1.0'
   s.summary          = 'A scratch card view for iOS'
 
 # This description is used to generate tags and improve search results.
