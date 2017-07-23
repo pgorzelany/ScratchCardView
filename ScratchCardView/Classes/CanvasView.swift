@@ -12,7 +12,7 @@ class CanvasView: UIView {
     
     // MARK: Properties
     
-    @IBInspectable var lineWidht: CGFloat = 10
+    @IBInspectable var lineWidth: CGFloat = 10
     @IBInspectable var strokeColor = UIColor.black
     
     fileprivate var paths: [CGMutablePath] = []
@@ -35,7 +35,7 @@ class CanvasView: UIView {
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         context?.setStrokeColor(strokeColor.cgColor)
-        context?.setLineWidth(lineWidht)
+        context?.setLineWidth(lineWidth)
         for path in paths + [currentPath].flatMap({$0}) {
             context?.addPath(path)
             context?.strokePath()
