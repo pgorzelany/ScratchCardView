@@ -23,7 +23,11 @@ open class ScratchCardView: UIView {
 
     // MARK: Properties
     
-    @IBInspectable public var scratchWidth: CGFloat = 30
+    @IBInspectable public var scratchWidth: CGFloat = 30 {
+        didSet {
+            canvasMaskView.lineWidth = scratchWidth
+        }
+    }
     
     private var coverViewContainer = UIView()
     private var contentViewContainer = UIView()
@@ -71,7 +75,7 @@ open class ScratchCardView: UIView {
     private func configureMaskView() {
         canvasMaskView.backgroundColor = UIColor.clear
         canvasMaskView.strokeColor = UIColor.black
-        canvasMaskView.lineWidht = scratchWidth
+        canvasMaskView.lineWidth = scratchWidth
         contentViewContainer.mask = canvasMaskView
     }
     
