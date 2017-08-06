@@ -17,6 +17,10 @@ public protocol ScratchCardViewDelegate: class {
      It is initialy covered and is revealed after scratching the view. 
      */
     func contentView(for scratchCardView: ScratchCardView) -> UIView
+    
+    func scratchCardView(_ view: ScratchCardView, didStartScratchingAt point: CGPoint)
+    func scratchCardView(_ view: ScratchCardView, didScratchTo point: CGPoint)
+    func scratchCardViewDidEndScratching(_ view: ScratchCardView)
 }
 
 open class ScratchCardView: UIView {
@@ -73,6 +77,7 @@ open class ScratchCardView: UIView {
     }
     
     private func configureMaskView() {
+        canvasMaskView.delegate = self
         canvasMaskView.backgroundColor = UIColor.clear
         canvasMaskView.strokeColor = UIColor.black
         canvasMaskView.lineWidth = scratchWidth
@@ -87,22 +92,43 @@ open class ScratchCardView: UIView {
         self.addGestureRecognizer(panRecognizer)
     }
     
-    private func clearView() {
+    // MARK: Public Methods
+    
+    /**
+     Clears the scratches
+     */
+    public func clear() {
         canvasMaskView.clear()
+    }
+    
+    /**
+     Asks the delegate for a new cover and contant views
+     */
+    public func reloadView() {
+        clear()
         (coverViewContainer.subviews + contentViewContainer.subviews).forEach { (subview) in
             subview.removeFromSuperview()
         }
-    }
-    
-    // MARK: Public Methods
-    
-    public func reloadView() {
-        clearView()
         guard let coverView = delegate?.coverView(for: self),
             let contentView = delegate?.contentView(for: self) else {
             return
         }
         coverViewContainer.addSubviewFullscreen(coverView)
         contentViewContainer.addSubviewFullscreen(contentView)
+    }
+}
+
+extension ScratchCardView: CanvasViewDelegate, UITableViewDelegate {
+    
+    func canvasViewDidStartDrawing(_view: CanvasView, at point: CGPoint) {
+        delegate?.scratchCardView(self, didStartScratchingAt: point)
+    }
+    
+    func canvasViewDidAddLine(_ view: CanvasView, to point: CGPoint) {
+        delegate?.scratchCardView(self, didScratchTo: point)
+    }
+    
+    func canvasViewDidEndDrawing(_ view: CanvasView) {
+        delegate?.scratchCardViewDidEndScratching(self)
     }
 }

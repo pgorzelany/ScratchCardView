@@ -8,9 +8,18 @@
 
 import UIKit
 
+protocol CanvasViewDelegate: class {
+    
+    func canvasViewDidStartDrawing(_view: CanvasView, at point: CGPoint)
+    func canvasViewDidAddLine(_ view: CanvasView, to point: CGPoint)
+    func canvasViewDidEndDrawing(_ view: CanvasView)
+}
+
 class CanvasView: UIView {
     
     // MARK: Properties
+    
+    weak var delegate: CanvasViewDelegate?
     
     @IBInspectable var lineWidth: CGFloat = 10
     @IBInspectable var strokeColor = UIColor.black
@@ -50,10 +59,13 @@ class CanvasView: UIView {
         switch recognizer.state {
         case .began:
             beginPath(at: location)
+            delegate?.canvasViewDidStartDrawing(_view: self, at: location)
         case .changed:
             addLine(to: location)
+            delegate?.canvasViewDidAddLine(self, to: location)
         default:
             closePath()
+            delegate?.canvasViewDidEndDrawing(self)
         }
     }
     
