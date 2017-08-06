@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol ScratchCardViewDelegate: class {
+@objc public protocol ScratchCardViewDelegate: class {
     
     /** The top view of the scratch card. Covers the content view. */
     func coverView(for scratchCardView: ScratchCardView) -> UIView
@@ -18,9 +18,9 @@ public protocol ScratchCardViewDelegate: class {
      */
     func contentView(for scratchCardView: ScratchCardView) -> UIView
     
-    func scratchCardView(_ view: ScratchCardView, didStartScratchingAt point: CGPoint)
-    func scratchCardView(_ view: ScratchCardView, didScratchTo point: CGPoint)
-    func scratchCardViewDidEndScratching(_ view: ScratchCardView)
+    @objc optional func scratchCardView(_ view: ScratchCardView, didStartScratchingAt point: CGPoint)
+    @objc optional func scratchCardView(_ view: ScratchCardView, didScratchTo point: CGPoint)
+    @objc optional func scratchCardViewDidEndScratching(_ view: ScratchCardView)
 }
 
 open class ScratchCardView: UIView {
@@ -121,14 +121,14 @@ open class ScratchCardView: UIView {
 extension ScratchCardView: CanvasViewDelegate, UITableViewDelegate {
     
     func canvasViewDidStartDrawing(_view: CanvasView, at point: CGPoint) {
-        delegate?.scratchCardView(self, didStartScratchingAt: point)
+        delegate?.scratchCardView?(self, didStartScratchingAt: point)
     }
     
     func canvasViewDidAddLine(_ view: CanvasView, to point: CGPoint) {
-        delegate?.scratchCardView(self, didScratchTo: point)
+        delegate?.scratchCardView?(self, didScratchTo: point)
     }
     
     func canvasViewDidEndDrawing(_ view: CanvasView) {
-        delegate?.scratchCardViewDidEndScratching(self)
+        delegate?.scratchCardViewDidEndScratching?(self)
     }
 }

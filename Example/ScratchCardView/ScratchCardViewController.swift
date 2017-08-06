@@ -64,7 +64,7 @@ class ScratchCardViewController: UIViewController {
     }
 }
 
-extension ScratchCardViewController: ScratchCardViewDelegate {
+extension ScratchCardViewController: ScratchCardViewDelegate, UITableViewDelegate {
     
     func coverView(for scratchCardView: ScratchCardView) -> UIView {
         return scratchCards[currentIndex].coverView
@@ -72,6 +72,18 @@ extension ScratchCardViewController: ScratchCardViewDelegate {
     
     func contentView(for scratchCardView: ScratchCardView) -> UIView {
         return scratchCards[currentIndex].contentView
+    }
+    
+    func scratchCardView(_ view: ScratchCardView, didScratchTo point: CGPoint) {
+        print("Did scratch to \(point)")
+    }
+    
+    func scratchCardView(_ view: ScratchCardView, didStartScratchingAt point: CGPoint) {
+        print("Did start scratching at \(point)")
+    }
+    
+    func scratchCardViewDidEndScratching(_ view: ScratchCardView) {
+        print("Did end scratching")
     }
 }
 
