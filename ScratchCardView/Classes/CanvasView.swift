@@ -10,7 +10,7 @@ import UIKit
 
 protocol CanvasViewDelegate: class {
     
-    func canvasViewDidStartDrawing(_view: CanvasView, at point: CGPoint)
+    func canvasViewDidStartDrawing(_ view: CanvasView, at point: CGPoint)
     func canvasViewDidAddLine(_ view: CanvasView, to point: CGPoint)
     func canvasViewDidEndDrawing(_ view: CanvasView)
 }
@@ -59,7 +59,7 @@ class CanvasView: UIView {
         switch recognizer.state {
         case .began:
             beginPath(at: location)
-            delegate?.canvasViewDidStartDrawing(_view: self, at: location)
+            delegate?.canvasViewDidStartDrawing(self, at: location)
         case .changed:
             addLine(to: location)
             delegate?.canvasViewDidAddLine(self, to: location)

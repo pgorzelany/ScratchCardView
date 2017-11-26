@@ -21,6 +21,7 @@ import UIKit
     @objc optional func scratchCardView(_ view: ScratchCardView, didStartScratchingAt point: CGPoint)
     @objc optional func scratchCardView(_ view: ScratchCardView, didScratchTo point: CGPoint)
     @objc optional func scratchCardViewDidEndScratching(_ view: ScratchCardView)
+    @objc optional func scratchCardView(_ view: ScratchCardView, scratchPercent: Double)
 }
 
 open class ScratchCardView: UIView {
@@ -120,16 +121,24 @@ open class ScratchCardView: UIView {
 
 extension ScratchCardView: CanvasViewDelegate, UITableViewDelegate {
     
-    func canvasViewDidStartDrawing(_view: CanvasView, at point: CGPoint) {
+    func canvasViewDidStartDrawing(_ view: CanvasView, at point: CGPoint) {
         delegate?.scratchCardView?(self, didStartScratchingAt: point)
+        delegate?.scratchCardView?(self, scratchPercent: getScratchPercent(for: view))
     }
     
     func canvasViewDidAddLine(_ view: CanvasView, to point: CGPoint) {
         delegate?.scratchCardView?(self, didScratchTo: point)
-        print("Transparent pixels percent: \(view.getTransparentPixelsPercent())")
+        delegate?.scratchCardView?(self, scratchPercent: getScratchPercent(for: view))
     }
     
     func canvasViewDidEndDrawing(_ view: CanvasView) {
         delegate?.scratchCardViewDidEndScratching?(self)
+        delegate?.scratchCardView?(self, scratchPercent: getScratchPercent(for: view))
+    }
+
+    private func getScratchPercent(for canvas: CanvasView) -> Double {
+        // Since the transparency is inverted, the cover view gets transparent if the mask is not transparent
+        // So we need to check how many pixels are NOT transparent in the mask
+        return (1.0 - canvas.getTransparentPixelsPercent())
     }
 }

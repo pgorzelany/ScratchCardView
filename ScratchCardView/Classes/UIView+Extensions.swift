@@ -19,7 +19,6 @@ extension UIView {
     }
 
     func getSnapshot() -> CGImage? {
-        // Create ARGB image bitmap context
         UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
         guard let ctx = UIGraphicsGetCurrentContext() else {
             return nil
@@ -40,19 +39,21 @@ extension UIView {
         let height = image.height
         let imageDataPointer: UnsafePointer<UInt8> = CFDataGetBytePtr(imageData)
         var transparentPixelCount = 0
-        print("This is the pointer \(imageDataPointer)")
 
         for x in 0...width {
             for y in 0...height {
                 let pixelDataPosition = ((width * y) + x) * 4
-                // The alpha value is the first 8 bits of the data since the inage was created in the ARGB color space
-                let alphaValue = imageDataPointer[pixelDataPosition]
+                // The alpha value is the last 8 bits of the data
+                let alphaValue = imageDataPointer[pixelDataPosition + 3]
                 if alphaValue == 0 {
                     transparentPixelCount += 1
                 }
             }
         }
 
-        return Double(transparentPixelCount) / Double((width * height))
+        var transparentPercent = Double(transparentPixelCount) / Double((width * height))
+        transparentPercent = max(transparentPercent, 0)
+        transparentPercent = min(transparentPercent, 1)
+        return transparentPercent
     }
 }

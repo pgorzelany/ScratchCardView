@@ -53,7 +53,7 @@ class ScratchCardViewController: UIViewController {
     
     private func configureScratchCardView() {
         scratchCardView.delegate = self
-        scratchCardView.scratchWidth = 20
+        scratchCardView.scratchWidth = 50
     }
     
     // MARK: Actions
@@ -84,6 +84,10 @@ extension ScratchCardViewController: ScratchCardViewDelegate, UITableViewDelegat
     
     func scratchCardViewDidEndScratching(_ view: ScratchCardView) {
         print("Did end scratching")
+    }
+
+    func scratchCardView(_ view: ScratchCardView, scratchPercent: Double) {
+        print("Scratch percent: \(scratchPercent)")
     }
 }
 
