@@ -126,6 +126,7 @@ extension ScratchCardView: CanvasViewDelegate, UITableViewDelegate {
     
     func canvasViewDidAddLine(_ view: CanvasView, to point: CGPoint) {
         delegate?.scratchCardView?(self, didScratchTo: point)
+        print("Transparent pixels percent: \(view.getTransparentPixelsPercent())")
     }
     
     func canvasViewDidEndDrawing(_ view: CanvasView) {
