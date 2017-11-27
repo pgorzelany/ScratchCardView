@@ -1,6 +1,5 @@
 # ScratchCardView
 
-[![CI Status](http://img.shields.io/travis/pgorzelany/ScratchCardView.svg?style=flat)](https://travis-ci.org/pgorzelany/ScratchCardView)
 [![Version](https://img.shields.io/cocoapods/v/ScratchCardView.svg?style=flat)](http://cocoapods.org/pods/ScratchCardView)
 [![License](https://img.shields.io/cocoapods/l/ScratchCardView.svg?style=flat)](http://cocoapods.org/pods/ScratchCardView)
 [![Platform](https://img.shields.io/cocoapods/p/ScratchCardView.svg?style=flat)](http://cocoapods.org/pods/ScratchCardView)
@@ -17,6 +16,12 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "ScratchCardView"
 ```
+
+## Documentation
+
+Extensive documentation can be found [Here](https://pgorzelany.github.io/ScratchCardView/).
+
+Special thanks to the [Jazzy](https://github.com/realm/jazzy) project for automatic documentation generation.
 
 ## Usage
 
