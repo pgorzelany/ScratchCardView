@@ -21,7 +21,6 @@ import UIKit
     @objc optional func scratchCardView(_ view: ScratchCardView, didStartScratchingAt point: CGPoint)
     @objc optional func scratchCardView(_ view: ScratchCardView, didScratchTo point: CGPoint)
     @objc optional func scratchCardViewDidEndScratching(_ view: ScratchCardView)
-    @objc optional func scratchCardView(_ view: ScratchCardView, scratchPercent: Double)
 }
 
 open class ScratchCardView: UIView {
@@ -32,6 +31,15 @@ open class ScratchCardView: UIView {
         didSet {
             canvasMaskView.lineWidth = scratchWidth
         }
+    }
+    
+    /// The percent of total view area that is revealed by the scratches.
+    /// Computing this property requires heavy CPU work,
+    /// consider doing it on a backgroung thread if used frequently
+    ///
+    /// Returns: a value between 0 and 1
+    public var scratchPercent: Double {
+        return getScratchPercent()
     }
     
     private var coverViewContainer = UIView()
@@ -93,6 +101,14 @@ open class ScratchCardView: UIView {
         self.addGestureRecognizer(panRecognizer)
     }
     
+    // MARK: Private methods
+    
+    private func getScratchPercent() -> Double {
+        // Since the transparency is inverted, the cover view gets transparent if the mask is not transparent
+        // So we need to check how many pixels are NOT transparent in the mask
+        return (1.0 - canvasMaskView.getTransparentPixelsPercent())
+    }
+    
     // MARK: Public Methods
     
     /**
@@ -123,22 +139,13 @@ extension ScratchCardView: CanvasViewDelegate, UITableViewDelegate {
     
     func canvasViewDidStartDrawing(_ view: CanvasView, at point: CGPoint) {
         delegate?.scratchCardView?(self, didStartScratchingAt: point)
-        delegate?.scratchCardView?(self, scratchPercent: getScratchPercent(for: view))
     }
     
     func canvasViewDidAddLine(_ view: CanvasView, to point: CGPoint) {
         delegate?.scratchCardView?(self, didScratchTo: point)
-        delegate?.scratchCardView?(self, scratchPercent: getScratchPercent(for: view))
     }
     
     func canvasViewDidEndDrawing(_ view: CanvasView) {
         delegate?.scratchCardViewDidEndScratching?(self)
-        delegate?.scratchCardView?(self, scratchPercent: getScratchPercent(for: view))
-    }
-
-    private func getScratchPercent(for canvas: CanvasView) -> Double {
-        // Since the transparency is inverted, the cover view gets transparent if the mask is not transparent
-        // So we need to check how many pixels are NOT transparent in the mask
-        return (1.0 - canvas.getTransparentPixelsPercent())
     }
 }

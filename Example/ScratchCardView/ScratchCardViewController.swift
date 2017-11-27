@@ -84,10 +84,7 @@ extension ScratchCardViewController: ScratchCardViewDelegate, UITableViewDelegat
     
     func scratchCardViewDidEndScratching(_ view: ScratchCardView) {
         print("Did end scratching")
-    }
-
-    func scratchCardView(_ view: ScratchCardView, scratchPercent: Double) {
-        print("Scratch percent: \(scratchPercent)")
+        print("Scratch Percent: \(view.scratchPercent)")
     }
 }
 
