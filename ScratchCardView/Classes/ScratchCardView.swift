@@ -44,6 +44,7 @@ import UIKit
     @objc optional func scratchCardViewDidEndScratching(_ view: ScratchCardView)
 }
 
+/// The ScratchCardView
 open class ScratchCardView: UIView {
 
     // MARK: Properties
