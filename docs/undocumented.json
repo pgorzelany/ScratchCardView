@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/mlody/Projects/ScratchCardView/ScratchCardView/Classes/ScratchCardView.swift",
+      "line": 92,
+      "symbol": "ScratchCardView.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/mlody/Projects/ScratchCardView/ScratchCardView/Classes/ScratchCardView.swift",
+      "line": 98,
+      "symbol": "ScratchCardView.layoutSubviews()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/mlody/Projects/ScratchCardView"
+}
