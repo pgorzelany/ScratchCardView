@@ -8,18 +8,39 @@
 
 import UIKit
 
+/// The ScratchCardViewDelegate interface
 @objc public protocol ScratchCardViewDelegate: class {
     
-    /** The top view of the scratch card. Covers the content view. */
+    /// The top view of the scratch card. Covers the content view.
+    ///
+    /// - Parameter scratchCardView: the view that asks for the cover view.
+    /// - Returns: The method should return a cover view for the scratch card
     func coverView(for scratchCardView: ScratchCardView) -> UIView
     
-    /** The content view of the scratch card. 
-     It is initialy covered and is revealed after scratching the view. 
-     */
+    /// The content view of the scratch card.
+    /// It is initialy covered and is revealed after scratching the view.
+    ///
+    /// - Parameter scratchCardView: The view that asks for the content view.
+    /// - Returns: The method should return a content view for the scratch card
     func contentView(for scratchCardView: ScratchCardView) -> UIView
     
+    /// Gets called when scratching starts
+    ///
+    /// - Parameters:
+    ///   - view: The scratch card
+    ///   - point: The point at which the scratches started. In the scratch card coordinate system
     @objc optional func scratchCardView(_ view: ScratchCardView, didStartScratchingAt point: CGPoint)
+    
+    /// Called when scratches are in progress
+    ///
+    /// - Parameters:
+    ///   - view: The scratch card
+    ///   - point: The point to which the scratching finger moved. In the scratch card coordinate system
     @objc optional func scratchCardView(_ view: ScratchCardView, didScratchTo point: CGPoint)
+    
+    /// Called when current scratches stop (user lifts his finger)
+    ///
+    /// - Parameter view: The scratch card
     @objc optional func scratchCardViewDidEndScratching(_ view: ScratchCardView)
 }
 
@@ -27,6 +48,7 @@ open class ScratchCardView: UIView {
 
     // MARK: Properties
     
+    /// The width of the scratch. Default is 30.
     @IBInspectable public var scratchWidth: CGFloat = 30 {
         didSet {
             canvasMaskView.lineWidth = scratchWidth
@@ -35,7 +57,7 @@ open class ScratchCardView: UIView {
     
     /// The percent of total view area that is revealed by the scratches.
     /// Computing this property requires heavy CPU work,
-    /// consider doing it on a backgroung thread if used frequently
+    /// consider doing it on a backgroung thread if used frequently.
     ///
     /// Returns: a value between 0 and 1
     public var scratchPercent: Double {
@@ -48,6 +70,10 @@ open class ScratchCardView: UIView {
     
     // MARK: Delegate
     
+    /// The delegate for the ScratchCardView
+    ///
+    /// The delegate is responsible for providing the content and cover views.
+    /// It also gets notified of important events like scratch start or end.
     public weak var delegate: ScratchCardViewDelegate? {
         didSet {
             reloadView()
@@ -111,16 +137,12 @@ open class ScratchCardView: UIView {
     
     // MARK: Public Methods
     
-    /**
-     Clears the scratches
-     */
+    /// Clears the scratches from the current view
     public func clear() {
         canvasMaskView.clear()
     }
     
-    /**
-     Asks the delegate for a new cover and contant views
-     */
+    /// Clears the scratches and asks the delegate for a new cover and contant views
     public func reloadView() {
         clear()
         (coverViewContainer.subviews + contentViewContainer.subviews).forEach { (subview) in
