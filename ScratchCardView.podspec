@@ -26,6 +26,7 @@ A scratch card view for iOS. Scratch card made easy!
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'pgorzelany' => 'piotr.gorzelany@gmail.com' }
   s.source           = { :git => 'https://github.com/pgorzelany/ScratchCardView.git', :tag => s.version.to_s }
+  s.swift_version = '5.0'
   # s.social_media_url = 'https://twitter.com/PGorzelany'
 
   s.ios.deployment_target = '8.0'
