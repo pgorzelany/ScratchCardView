@@ -22,7 +22,6 @@ class ScratchCardViewController: UIViewController {
     
     // MARK: Properties
     
-    var currentImage = #imageLiteral(resourceName: "tailor-image")
     var currentIndex = 0
     var scratchCards = [ScratchCard]()
     

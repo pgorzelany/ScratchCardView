@@ -45,7 +45,7 @@ class CanvasView: UIView {
         let context = UIGraphicsGetCurrentContext()
         context?.setStrokeColor(strokeColor.cgColor)
         context?.setLineWidth(lineWidth)
-        for path in paths + [currentPath].flatMap({$0}) {
+        for path in paths + [currentPath].compactMap({$0}) {
             context?.addPath(path)
             context?.strokePath()
         }
